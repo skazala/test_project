@@ -1,0 +1,12 @@
+# disable indexing directory's content:
+Options -Indexes 
+# disable possibility to view the source code:
+AddType application/x-httpd-php .php .phtml 
+
+# disable URL-processing in Apache so that index.php would handle it
+RewriteEngine On
+# RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule !\.(css|js|icon|zip|rar|png|jpg|gif|pdf)$ index.php [L]
