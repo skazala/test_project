@@ -1,0 +1,23 @@
+<h2>Get a report!</h2>
+    
+<form class="form" action="" method="post">
+    Choose a topic:
+    <br />
+    <select name="topic">
+        <option value="cards">Loyalty cards</option>
+        <option value="customers">Customers</option>
+        <option value="topten">Top10 customers</option> 
+    </select>
+    <div>
+        <br />
+        <input type="submit" value="Show" />
+    </div>
+    <br />
+</form>
+
+<h3><?= $count ?></h3>
+
+<?php 
+    if ($result_view) 
+        require('views/' . $result_view . '.phtml');
+?>

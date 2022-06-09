@@ -1,0 +1,14 @@
+<?php if (!$result_set) : ?>
+    <p>Nothing found!</p>
+<?php endif; ?>
+<?php foreach($result_set as $user): ?>
+    <div>
+        <p><b>Name:</b> <?= htmlspecialchars($user['name']) ?></p>
+        <p><b>Surname:</b> <?= htmlspecialchars($user['surname']) ?></p>
+        <p><b>Email:</b> <?= htmlspecialchars($user['email']) ?></p>
+        <p><b>Address:</b> <?= htmlspecialchars($user['address']) ?></p>
+        <p><b>Phone number:</b> <?= htmlspecialchars($user['phone']) ?></p>
+        <p><b>Date of registration:</b> <?= htmlspecialchars($user['date_of_registration']) ?></p>
+        <br />
+    </div>
+<?php endforeach ?>

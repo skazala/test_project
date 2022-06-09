@@ -1,0 +1,20 @@
+    <table>
+        <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Phone Number</th>
+        <th>Date of registration</th>
+        </tr>
+        <?php foreach($customers as $customer) : ?>
+            <tr>
+            <td><?php echo htmlspecialchars($customer['name']); ?></td>
+            <td><?php echo htmlspecialchars($customer['surname']); ?></td>
+            <td><?php echo htmlspecialchars($customer['email']); ?></td>
+            <td><?php echo htmlspecialchars($customer['address']); ?></td>
+            <td><?php echo htmlspecialchars($customer['phone']); ?></td>
+            <td><?php echo htmlspecialchars($customer['date_of_registration']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>

@@ -1,0 +1,12 @@
+    <table>
+        <tr>
+        <th>Number</th>
+        <th>Type</th>
+        </tr>
+        <?php foreach($cards as $card) : ?>
+            <tr>
+            <td><?php echo htmlspecialchars($card['number']); ?></td>
+            <td><?php echo htmlspecialchars($card['type']); ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </table>    

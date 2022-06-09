@@ -1,0 +1,19 @@
+    <h2>Register a new customer!</h2>
+    <form action="" method="post">
+            <br />Name:
+            <br /><input type="text" name="name" value="<?= $name; ?>" />
+            <br />Surname:
+            <br /><input type="text" name="surname" value="<?= $surname; ?>" />
+            <br />E-mail:
+            <br /><input type="email" name="email" value="<?= $email; ?>" />
+            <br />Address:
+            <br /><input type="text" name="address" value="<?= $address; ?>" />
+            <br />Phone number:
+            <br /><input type="text" name="phone" value="<?= $phone; ?>" placeholder="+1234567890"/>
+            <br />Choose loyalty card type:
+            <br /><select name="card_type">
+                    <option value="virtual" <?php if ($card_type == 'virtual') {echo 'selected';} ?>>Virtual</option>
+                    <option value="plastic" <?php if ($card_type == 'plastic') {echo 'selected';} ?>>Plastic</option>
+                  </select>
+            <br /><p><input type="submit" value="Register a new customer" /></p>
+    </form>

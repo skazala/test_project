@@ -1,0 +1,17 @@
+<h2>Search anything you want here!</h2>
+
+<form class="form" action="" method="post">
+    <input type="radio" id="name" name="search_by" value="name" checked>
+    <label for="name">Search customer by name</label><br />
+    <input type="radio" id="surname" name="search_by" value="surname">
+    <label for="surname">Search customer by surname</label><br />
+    <input type="radio" id="card_number" name="search_by" value="card_number">
+    <label for="card_number">Search customer by card number</label><br />
+    <input type="text" name="search_text" value="" />
+    <input type="submit" value="Search" />
+</form>
+
+<?php 
+    if ($result_view) 
+        require('views/' . $result_view . '.phtml');
+?>

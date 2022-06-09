@@ -1,0 +1,14 @@
+<table>
+  	<tr>
+      <th>Money Spent</th>
+      <th>Name</th>
+      <th>Surname</th>
+  	</tr>
+    <?php foreach($topten as $customer) : ?>
+        <tr>
+          <td><?php echo htmlspecialchars($customer['money_spent']); ?></td>
+          <td><?php echo htmlspecialchars($customer['name']); ?></td>
+          <td><?php echo htmlspecialchars($customer['surname']); ?></td>
+    	  </tr>
+    <?php endforeach; ?>
+</table>
