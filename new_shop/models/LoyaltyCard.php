@@ -1,5 +1,5 @@
 <?php
-class LoyaltyCard extends Dbh {
+class LoyaltyCard {
 
     private $type;
 
@@ -8,7 +8,7 @@ class LoyaltyCard extends Dbh {
     }
     
     protected function getLastNumber() {
-        $query = $this->connect()->query('SELECT MAX(number) FROM loyalty_cards LIMIT 1;');
+        $query = Dbh_static::$connection->query('SELECT MAX(number) FROM loyalty_cards LIMIT 1;');
         $row = $query->fetch(PDO::FETCH_ASSOC);
         $number = $row['MAX(number)'];
         $query = null;
@@ -18,7 +18,7 @@ class LoyaltyCard extends Dbh {
 
     protected function getNewCustomerId() {
         
-        $query = $this->connect()->query('SELECT id FROM customers ORDER BY id DESC LIMIT 1;');
+        $query = Dbh_static::$connection->query('SELECT id FROM customers ORDER BY id DESC LIMIT 1;');
         $row = $query->fetch(PDO::FETCH_ASSOC);
         $id = $row['id'];        
         $query = null;
@@ -31,10 +31,28 @@ class LoyaltyCard extends Dbh {
         $number = (int)$this->getLastNumber() + 1;
         $customer_id = (int)$this->getNewCustomerId(); 
   
-        $query = $this->connect()->prepare('INSERT INTO loyalty_cards (number, type, customer_id) VALUES (?, ?, ?);');
+        $query = Dbh_static::$connection->prepare('INSERT INTO loyalty_cards (number, type, customer_id) VALUES (?, ?, ?);');
         $query->execute(array($number, $this->type, $customer_id));
         $query = null;
 
     }
 
+    public static function countCards() {
+  
+        $query = Dbh_static::$connection->query('SELECT COUNT(*) FROM loyalty_cards;');
+        $row = $query->fetch(PDO::FETCH_ASSOC);
+        $count = $row['COUNT(*)'];        
+        $query = null;
+
+        return $count;
+    }
+
+    public static function getAllCards() {
+
+        $query = Dbh_static::$connection->query('SELECT number, type FROM loyalty_cards ORDER BY number ASC;');
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+        $query = null;
+    
+        return $result;  
+    }
 }
