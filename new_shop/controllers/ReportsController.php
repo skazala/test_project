@@ -9,27 +9,26 @@ class ReportsController extends Controller {
         
         //Was the form submitted?
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $report = new Report();
             
             switch ($_POST['topic']) {
                 case 'cards':
                     //get cards report
-                    $this->data['count'] = 'There are ' . $report->countCards()  . ' cards in the shop.';
-                    $this->data['cards'] = $report->getAllCards();
+                    $this->data['count'] = 'There are ' . LoyaltyCard::countCards()  . ' cards in the shop.';
+                    $this->data['cards'] = LoyaltyCard::getAllCards();
 
                     $this->data['result_view'] = 'allcards';
                     break;
                 case 'customers':
                     //get customers report
-                    $this->data['count'] = 'There are ' . $report->countCustomers() . ' customers in the shop.';
-                    $this->data['customers'] = $report->getAllCustomers();
+                    $this->data['count'] = 'There are ' . Customer::countCustomers() . ' customers in the shop.';
+                    $this->data['customers'] = Customer::getAllCustomers();
                     
                     $this->data['result_view'] = 'allcustomers';
                     break;
                 case 'topten':    
                     //get top10 customers
                     $this->data['count'] = 'Top10 buyers at Crazy shop:';
-                    $this->data['topten'] = $report->getTop10Customers();
+                    $this->data['topten'] = Customer::getTop10Customers();
 
                     $this->data['result_view'] = 'topten';
                     
