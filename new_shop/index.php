@@ -12,6 +12,8 @@
 
   spl_autoload_register("classAutoloader");
 
+  Dbh_static::connect();
+
   $router = new RouterController();
   
   $router->process(array($_SERVER['REQUEST_URI']));
